@@ -4,7 +4,7 @@
 Code for the paper [Operator Learning with Gaussian Processes](https://arxiv.org/abs/2409.04538), where we introduce a _general_ framework based on Gaussian Processes (GPs) for approximating single- or multi-output operators in either a purely data-driven context, or by using both data and physics. To achieve this, we cast operator learning as a regression problem, naturally suited for GP-based regression techniques:
 ![OperatorLearningDiagram](https://github.com/user-attachments/assets/e2afbbd3-601c-4a99-9863-2d5149b0e737)
 
-The mean function of the GP can be set to zero or parameterized by a neural operator, and for each setting we develop a robust and scalable training strategy. These strategies rely on the assumption that both input and output functions are richly sampled at the same locations across samples. This allows us to 
+The mean function of the GP can be set to zero or parameterized by a neural operator, and for each setting we develop a robust and scalable training strategy. These strategies rely on the assumption that both input and output functions are richly sampled at the same locations across samples, allowing us to: 
 1. Leverage the data structure together with the separability assumption on the kernel to formulate the GP's covariance matrix using the Kronecker product.
 2. Initialize the kernel parameters such that they require little to no tuning.
 While these strategies have proven effective for the problems tested in the aformentioned paper, we recommend that users explore alternative initialization settings, if they suspect that the above assumptions do not hold for their particular problem, using our insights and guidelines as a basis for developing strong baseline models.
