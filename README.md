@@ -7,6 +7,7 @@ Code for the paper [Operator Learning with Gaussian Processes](https://arxiv.org
 The mean function of the GP can be set to zero or parameterized by a neural operator, and for each setting we develop a robust and scalable training strategy. These strategies rely on the assumption that both input and output functions are richly sampled at the same locations across samples, allowing us to: 
 1. Leverage the data structure together with the separability assumption on the kernel to formulate the GP's covariance matrix using the Kronecker product.
 2. Initialize the kernel parameters such that they require little to no tuning.
+
 While these strategies have proven effective for the problems tested in the aforementioned paper, we recommend that users explore alternative initialization settings if they suspect that the above assumptions do not hold for their specific problem, using our insights and guidelines as a basis for developing strong baseline models.
 
 Through a diverse set of numerical benchmarks, we demonstrate our method's scope, scalability, efficiency, and robustness. Our results show that, our method: 
