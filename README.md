@@ -13,6 +13,7 @@ While these strategies have proven effective for the problems tested in the pape
 Through a diverse set of numerical benchmarks, we demonstrate our method's scope, scalability, efficiency, and robustness. Our results show that, our method: 
 1. Enhances the performance of a base neural operator by using it as the mean function of a GP.
 2. Enables the construction of zero-shot data-driven models that can make accurate predictions without any prior training.
+
 ![ResultsTable](https://github.com/user-attachments/assets/420b0e6e-b0a4-4b03-8c09-f5b69fc74359)
 ![Burgers_Darcy_Advection_Structural](https://github.com/user-attachments/assets/5c5814d1-0ac3-4735-9be7-4563aa68e39c)
 
