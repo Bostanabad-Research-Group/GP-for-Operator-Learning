@@ -5,4 +5,4 @@ For the Burgers, Advection, and Darcy problems, download the corresponding datas
 
 The dataset for the Structural Mechanics problem can be found at this [link](https://data.caltech.edu/records/fp3ds-kej20).  
 
-The dataset for our LDC problem is already provided in the folder.
+The dataset for the LDC problem is already provided in the folder.
