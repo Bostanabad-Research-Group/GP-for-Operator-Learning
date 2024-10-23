@@ -24,8 +24,8 @@ To run the code, please install the following packages. If using Anaconda, you c
 - [PyTorch](https://github.com/pytorch/pytorch) == 1.12.0 & CUDA >= 11.3: `conda install pytorch==1.12.0 torchvision==0.13.0 torchaudio==0.12.0 cudatoolkit=11.3 -c pytorch`
 - [GPyTorch](https://github.com/cornellius-gp/gpytorch) == 1.7.0: `conda install -c gpytorch gpytorch=1.7.0`
 - Dill == 0.3.5.1: `pip install dill==0.3.5.1`
-- Tqdm >= 4.66.4 `pip install tqdm`
-- Vtk == 9.3.0 `pip install vtk==9.3.0`
+- Tqdm >= 4.66.4: `pip install tqdm`
+- Vtk == 9.3.0: `pip install vtk==9.3.0`
 
 ## Usage
 Once the packages are installed, you are ready to run the code. Download the repository and run the main files located in the *Data-driven* and *Physics-informed* folders. You can customize the architecture, kernel type, number of epochs, and other settings using the parser in the main files.
