@@ -23,10 +23,7 @@ Please ensure the following packages are installed with the specified versions. 
 - Python == 3.9.13: `conda create --name NN_CoRes python=3.9.13` and then activate the environment via `conda activate NN_CoRes`
 - [PyTorch](https://github.com/pytorch/pytorch) == 1.12.0 & CUDA >= 11.3: `conda install pytorch==1.12.0 torchvision==0.13.0 torchaudio==0.12.0 cudatoolkit=11.3 -c pytorch`
 - [GPyTorch](https://github.com/cornellius-gp/gpytorch) == 1.7.0: `conda install -c gpytorch gpytorch=1.7.0`
-- [JAX](https://github.com/google/jax) == 0.4.25: `pip install jax==0.4.25 jaxlib==0.4.25 jaxtyping==0.2.25`
 - Dill == 0.3.5.1: `pip install dill==0.3.5.1`
-- Matplotlib == 3.5.3: `conda install -c conda-forge matplotlib=3.5.3`
-- Tqdm >= 4.66.4 `pip install tqdm`
 
 ## Usage
 After installing the above packages, you are all set to use our code. We provide two main files that demonstrate the application of our GP-based framework for solving the benchmark problems discussed in the paper.
