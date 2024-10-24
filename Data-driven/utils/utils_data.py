@@ -59,7 +59,7 @@ def get_bc(images):
     return outer_pixels
 
 
-def get_data_Darcy(**tkwargs):
+def get_data_Darcy(N, **tkwargs):
     # 5->85x85, 6->71x71, 7->61x61, 10->43x43, 12->36x36, 14->31x31, 15->29x29, 
     # 25->17x17, 30 -> 15x15, 45 -> 10x10, 50 -> 9x9, 65 -> 7x7, 95 -> 5x5
     
@@ -70,7 +70,7 @@ def get_data_Darcy(**tkwargs):
     s = int(((421 - 1) / r) + 1)
 
     ########## Training data set
-    ntrain = 1000
+    ntrain = N
     n_train = ntrain
     n_test = 200
     n_pca = min(ntrain, 200)
@@ -145,7 +145,7 @@ def get_data_Darcy(**tkwargs):
     
     return X_train.to(**tkwargs), U_train.to(**tkwargs), X_test.to(**tkwargs), U_test.to(**tkwargs)
 
-def get_data_Burgers(**tkwargs):
+def get_data_Burgers(N, **tkwargs):
     dataset_path = os.path.join(script_dir, rf'datasets/burgers_data_R10.mat')
     data = io.loadmat(dataset_path)
 
@@ -157,7 +157,7 @@ def get_data_Burgers(**tkwargs):
     U = data["u"][:, ::sub_u].astype(np.float64) # output: [N_ic, timesteps, x]
     A = data["a"][:, ::sub_a].astype(np.float64)
 
-    n_train = 1000
+    n_train = N
     n_test = 200
 
     ##### Training data set
@@ -186,7 +186,7 @@ def get_data_Burgers(**tkwargs):
 
     return X_train.to(**tkwargs), U_train.to(**tkwargs), X_grid_test.to(**tkwargs), U_grid_test.to(**tkwargs)
 
-def get_data_Advection(**tkwargs):
+def get_data_Advection(N, **tkwargs):
     def get_data_train(filename, n):
         nx = 40
         nt = 40
@@ -224,13 +224,13 @@ def get_data_Advection(**tkwargs):
     train_dataset_path = os.path.join(script_dir, rf'datasets/train_IC1.npz')
     test_dataset_path = os.path.join(script_dir, rf'datasets/test_IC1.npz')
 
-    X_train, U_train = get_data_train(train_dataset_path, n = 1000)
+    X_train, U_train = get_data_train(train_dataset_path, n = N)
     X_test, U_test = get_data_test(test_dataset_path, n = 200)
 
     return X_train.to(**tkwargs), U_train.to(**tkwargs), X_test.to(**tkwargs), U_test.to(**tkwargs)
 
-def get_data_Structural(**tkwargs):
-    n_train = 1000
+def get_data_Structural(N, **tkwargs):
+    n_train = N
     n_val = 250
     n_test = 20000
 
@@ -293,7 +293,7 @@ def get_data_Structural(**tkwargs):
     return X_train, U_train, X_val, U_val, X_test, U_test, dataloader, mean_U_train, std_U_train
 
 
-def get_data_LDC(**tkwargs):
+def get_data_LDC(N, **tkwargs):
     dataset_filename = "datasets/square_cavity.vtk"
     dataset_path = os.path.join(script_dir, dataset_filename)
     reader = vtk.vtkUnstructuredGridReader()
@@ -408,7 +408,7 @@ def get_data_LDC(**tkwargs):
     uvp_flatten = uvp_flatten[shuffled_indices,...]
 
     # Interpolation Data set
-    ntrain = 500
+    ntrain = N
     U_BC = uvp_bc_flatten[:ntrain, 0, :]
     V_BC = uvp_bc_flatten[:ntrain, 1, :]
     P_BC = uvp_bc_flatten[:ntrain, 2, :]
