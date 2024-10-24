@@ -29,8 +29,8 @@ def dataloader_to_tensor(dataloader):
 
     return all_inputs, all_labels
 
-def get_data_BurgersDirichlet(**tkwargs):
-    dataset_filename = "datasets/u_sol1BC_burger.mat"
+def get_data_BurgersDirichlet(N, **tkwargs):
+    dataset_filename = "datasets/u_sol_DirichletBC_burgers.mat"
     
     dataset_path = os.path.join(script_dir, dataset_filename)
     data = io.loadmat(dataset_path)
@@ -44,7 +44,7 @@ def get_data_BurgersDirichlet(**tkwargs):
     U0 = U[:,0:1,:].unsqueeze(-1).permute(0,1,3,2).repeat(1, X.shape[0], X.shape[1],1)
 
     ################# Kernel training data set #################
-    n_train = 100
+    n_train = N
     n_col = 50
     n_test = 200
     n_u0 = 100
@@ -134,7 +134,7 @@ def interpolate_grid(grid):
 
     return grid
 
-def get_data_LDC(**tkwargs):
+def get_data_LDC(N, **tkwargs):
     dataset_filename = "datasets/square_cavity.vtk"
     dataset_path = os.path.join(script_dir, dataset_filename) 
     reader = vtk.vtkUnstructuredGridReader()
@@ -223,7 +223,7 @@ def get_data_LDC(**tkwargs):
     uvp_flatten = uvp_flatten[shuffled_indices,...]
 
     # Kernel Data set
-    ntrain = 10
+    ntrain = N
 
     U_BC = uvp_bc_flatten[:ntrain, 0, :]
     V_BC = uvp_bc_flatten[:ntrain, 1, :]
