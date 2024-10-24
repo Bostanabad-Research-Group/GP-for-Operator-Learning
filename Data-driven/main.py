@@ -13,10 +13,11 @@ def get_parser():
     
     # Problem 
     parser.add_argument("--problem", type = str, default = 'Burgers') # Use 'Burgers', 'Darcy', 'Advection', 'Structural' or 'LDC'
+    parser.add_argument("--N", type = int, default = '1000') # Number of training samples
 
     # Kernel and mean type (use GPyTorch naming for kernels)
-    parser.add_argument("--kernel_phi", type = str, default = 'RBFKernel') # Use 'MaternKernel' or 'RBFKernel'
-    parser.add_argument("--kernel_y", type = str, default = 'RBFKernel') # Use 'MaternKernel' or 'RBFKernel'
+    parser.add_argument("--kernel_phi", type = str, default = 'MaternKernel') # Use 'MaternKernel' or 'RBFKernel'
+    parser.add_argument("--kernel_y", type = str, default = 'MaternKernel') # Use 'MaternKernel' or 'RBFKernel'
     parser.add_argument("--mean_type", type = str, default = 'FNO') # Use 'zero', 'DeepONet' or 'FNO'
     
     # Number of epochs
@@ -35,15 +36,15 @@ def get_parser():
 def main(options):
     ############################### 1. Generate Data ############################################
     if options.problem == 'Burgers':
-        X_train, U_train, X_test, U_test = get_data_Burgers(**options.tkwargs)
+        X_train, U_train, X_test, U_test = get_data_Burgers(options.N, **options.tkwargs)
     elif options.problem == 'Darcy':
-        X_train, U_train, X_test, U_test = get_data_Darcy(**options.tkwargs)
+        X_train, U_train, X_test, U_test = get_data_Darcy(options.N, **options.tkwargs)
     elif options.problem == 'Advection':
-        X_train, U_train, X_test, U_test = get_data_Advection(**options.tkwargs)
+        X_train, U_train, X_test, U_test = get_data_Advection(options.N, **options.tkwargs)
     elif options.problem == 'Structural':
-        X_train, U_train, X_val, U_val, X_test, U_test, _, mean_U_train, std_U_train = get_data_Structural(**options.tkwargs)
+        X_train, U_train, X_val, U_val, X_test, U_test, _, mean_U_train, std_U_train = get_data_Structural(options.N, **options.tkwargs)
     elif options.problem == 'LDC':
-        X_train, U_train, X_test, U_test, X_extrapolation, U_extrapolation, U_BC_FNO_train, U_BC_FNO_test, U_BC_FNO_extrapolation = get_data_LDC(**options.tkwargs)
+        X_train, U_train, X_test, U_test, X_extrapolation, U_extrapolation, U_BC_FNO_train, U_BC_FNO_test, U_BC_FNO_extrapolation = get_data_LDC(options.N, **options.tkwargs)
 
     ############################### 2. Build Model ##############################################
     if options.problem == 'Burgers':
