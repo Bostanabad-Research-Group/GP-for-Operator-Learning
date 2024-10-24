@@ -26,10 +26,7 @@ from ..priors import LogHalfHorseshoePrior,MollifiedUniformPrior
 from ..utils.transforms import softplus, inv_softplus
 from typing import List,Tuple,Union
 
-from botorch.models.gpytorch import GPyTorchModel
-from typing import List, Union
-
-class GPR(ExactGP, GPyTorchModel):
+class GPR(ExactGP):
     """Standard GP regression module for numerical inputs
 
     :param train_x: The training inputs (size N x d). All input variables are expected
