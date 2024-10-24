@@ -98,7 +98,7 @@ def main(options):
     else:
         rl2_error = model.evaluate_error(X_test, U_test)
 
-    print(f'Test relative L2 error: {rl2_error * 100:.2f}%')
+    print(f'Test relative L2 error: {rl2_error * 100:.3f}%')
 
 if __name__ == '__main__':
     options = get_parser()
