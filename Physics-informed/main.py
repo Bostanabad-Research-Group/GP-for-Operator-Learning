@@ -11,6 +11,7 @@ def get_parser():
     
     # Problem 
     parser.add_argument("--problem", type = str, default = 'LDC') # Use 'BurgersDirichlet' or 'LDC'
+    parser.add_argument("--N", type = str, default = '50') # Number of training samples
 
     # Kernel type (use GPyTorch naming)
     parser.add_argument("--kernel_phi", type = str, default = 'MaternKernel') # Use 'MaternKernel' or 'RBFKernel'
@@ -35,9 +36,9 @@ def main(options):
     fld = os.path.join(script_dir, rf'Checkpoints/PI-GP_{options.epochs}epochs')
 
     if options.problem == 'BurgersDirichlet':
-        kernel_train_dataset, train_dataset, test_dataset = get_data_BurgersDirichlet(**options.tkwargs)
+        kernel_train_dataset, train_dataset, test_dataset = get_data_BurgersDirichlet(options.N, **options.tkwargs)
     elif options.problem == 'LDC':
-        kernel_train_dataset, train_dataset, test_dataset = get_data_LDC(**options.tkwargs)
+        kernel_train_dataset, train_dataset, test_dataset = get_data_LDC(options.N, **options.tkwargs)
 
     train_dataloader = DataLoader(train_dataset, batch_size = 1, shuffle=True)
     test_dataloader = DataLoader(test_dataset, batch_size = 1, shuffle=True)
