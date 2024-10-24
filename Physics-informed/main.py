@@ -11,7 +11,7 @@ def get_parser():
     
     # Problem 
     parser.add_argument("--problem", type = str, default = 'LDC') # Use 'BurgersDirichlet' or 'LDC'
-    parser.add_argument("--N", type = str, default = '50') # Number of training samples
+    parser.add_argument("--N", type = int, default = '50') # Number of training samples
 
     # Kernel type (use GPyTorch naming)
     parser.add_argument("--kernel_phi", type = str, default = 'MaternKernel') # Use 'MaternKernel' or 'RBFKernel'
